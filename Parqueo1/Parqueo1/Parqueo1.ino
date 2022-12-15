@@ -20,6 +20,12 @@ int LED7 = 0;
 int LED8 = 0;
 int LED9 = 0;
 int LED10 = 0;
+int LED11 = 0;
+int LED12 = 0;
+int LED13 = 0;
+int LED14 = 0;
+int LED15 = 0;
+int LED16 = 0;
 
 #define S1 A0
 #define S2 A1
@@ -30,8 +36,13 @@ int LED10 = 0;
 #define S7 A6
 #define S8 A7
 
-
-
+#define S9 A8
+#define S10 A9
+#define S11 A10
+#define S12 A11
+#define S13 A12
+#define S14 A13
+#define S15 A14
 #define S16 A15
 
 boolean sensor1_old = LOW;
@@ -177,16 +188,95 @@ void ledPrint(){
       A8_1 = A8_1+128;
   }
 
-  
+  //LED 9
+  if(LED9 == 0){
+      V16_9 = V16_9 + 1;
+    
+  }else if(LED9 == 1){
+      R16_9 = R16_9 + 1;
+      
+  }else if(LED9 == 2){
+      A16_9 = A16_9 + 1;      
+  }
 
+  //LED 10
+  if(LED10 == 0){
+      V16_9 = V16_9 + 2;
+    
+  }else if(LED10 == 1){
+      R16_9 = R16_9 + 2;
+      
+  }else if(LED10 == 2){
+      A16_9 = A16_9 + 2;      
+  }
 
-  
-  
-  ledWrite();
-  
-  
-  
-  
+  //LED 11
+  if(LED11 == 0){
+      V16_9 = V16_9 + 4;
+    
+  }else if(LED11 == 1){
+      R16_9 = R16_9 + 4;
+      
+  }else if(LED11 == 2){
+      A16_9 = A16_9 + 4;      
+  }
+
+  //LED 12
+  if(LED12 == 0){
+      V16_9 = V16_9 + 8;
+    
+  }else if(LED12 == 1){
+      R16_9 = R16_9 + 8;
+      
+  }else if(LED12 == 2){
+      A16_9 = A16_9 + 8;      
+  }
+
+  //LED 13
+  if(LED13 == 0){
+      V16_9 = V16_9 + 16;
+    
+  }else if(LED13 == 1){
+      R16_9 = R16_9 + 16;
+      
+  }else if(LED13 == 2){
+      A16_9 = A16_9 + 16;      
+  }
+
+  //LED 14
+  if(LED14 == 0){
+      V16_9 = V16_9 + 32;
+    
+  }else if(LED14 == 1){
+      R16_9 = R16_9 + 32;
+      
+  }else if(LED14 == 2){
+      A16_9 = A16_9 + 32;      
+  }
+
+  //LED 15
+  if(LED15 == 0){
+      V16_9 = V16_9 + 64;
+    
+  }else if(LED15 == 1){
+      R16_9 = R16_9 + 64;
+      
+  }else if(LED15 == 2){
+      A16_9 = A16_9 + 64;      
+  }
+
+  //LED 16
+  if(LED16 == 0){
+      V16_9 = V16_9 + 128;
+    
+  }else if(LED16 == 1){
+      R16_9 = R16_9 + 128;
+      
+  }else if(LED16 == 2){
+      A16_9 = A16_9 + 128;      
+  }
+ 
+  ledWrite(); 
 }
 
 void setup(){
@@ -205,6 +295,13 @@ void setup(){
   pinMode(S7,INPUT);
   pinMode(S8,INPUT);
   
+  pinMode(S9,INPUT);
+  pinMode(S10,INPUT);
+  pinMode(S11,INPUT);
+  pinMode(S12,INPUT);
+  pinMode(S13,INPUT);
+  pinMode(S14,INPUT);
+  pinMode(S15,INPUT);
   pinMode(S16,INPUT);
 
 }
@@ -263,7 +360,31 @@ void loop(){
             s=strtok(NULL, ",");
             LED10 = atol(s);          
         } 
-        s=strtok(NULL, ",");
+        if(String(s) == "K"){
+            s=strtok(NULL, ",");
+            LED11 = atol(s);          
+        } 
+        if(String(s) == "L"){
+            s=strtok(NULL, ",");
+            LED12 = atol(s);          
+        } 
+        if(String(s) == "M"){
+            s=strtok(NULL, ",");
+            LED13 = atol(s);          
+        } 
+        if(String(s) == "N"){
+            s=strtok(NULL, ",");
+            LED14 = atol(s);          
+        }
+        if(String(s) == "O"){
+            s=strtok(NULL, ",");
+            LED15 = atol(s);          
+        }
+        if(String(s) == "P"){
+            s=strtok(NULL, ",");
+            LED16 = atol(s);          
+        }
+        
       }
       ledPrint(); 
     }
@@ -366,6 +487,97 @@ void loop(){
     Serial.println(a);
   }
 
-  
-  
+  //LED 9
+  sensor9_new = digitalRead(S9);
+  if((sensor9_new != sensor9_old)){
+    
+    LED9 = sensor9_new;
+    ledPrint();
+    sensor9_old = sensor9_new;
+
+    String a="UPDATEP2_PROT," + (String)sensor9_new +",0";
+    Serial.println(a);
+  }
+
+  //LED 10
+  sensor10_new = digitalRead(S10);
+  if((sensor10_new != sensor10_old)){
+    
+    LED10 = sensor10_new;
+    ledPrint();
+    sensor10_old = sensor10_new;
+
+    String a="UPDATEP2_PROT," + (String)sensor10_new +",1";
+    Serial.println(a);
+  }
+
+  //LED 11
+  sensor11_new = digitalRead(S11);
+  if((sensor11_new != sensor11_old)){
+    
+    LED11= sensor11_new;
+    ledPrint();
+    sensor11_old = sensor11_new;
+
+    String a="UPDATEP2_PROT," + (String)sensor11_new +",2";
+    Serial.println(a);
+  }
+
+  //LED 12
+  sensor12_new = digitalRead(S12);
+  if((sensor12_new != sensor12_old)){
+    
+    LED12 = sensor12_new;
+    ledPrint();
+    sensor12_old = sensor12_new;
+
+    String a="UPDATEP2_PROT," + (String)sensor12_new +",3";
+    Serial.println(a);
+  }
+
+  //LED 13
+  sensor13_new = digitalRead(S13);
+  if((sensor13_new != sensor13_old)){
+    
+    LED13 = sensor13_new;
+    ledPrint();
+    sensor13_old = sensor13_new;
+    String a="UPDATEP2_PROT," + (String)sensor13_new +",4";
+    Serial.println(a);
+  }
+
+  //LED 14
+  sensor14_new = digitalRead(S14);
+  if((sensor14_new != sensor14_old)){
+    
+    LED14 = sensor14_new;
+    ledPrint();
+    sensor14_old = sensor14_new;
+    String a="UPDATEP1_PROT," + (String)sensor14_new +",5";
+    Serial.println(a);
+  }
+
+  //LED 15
+  sensor15_new = digitalRead(S15);
+  if((sensor15_new != sensor15_old)){
+    
+    LED15 = sensor15_new;
+    ledPrint();
+    sensor15_old = sensor15_new;
+
+    String a="UPDATEP1_PROT," + (String)sensor15_new +",6";
+    Serial.println(a);
+  }
+
+  //LED 16
+  sensor16_new = digitalRead(S16);
+  if((sensor16_new != sensor16_old)){
+    
+    LED16 = sensor16_new;
+    ledPrint();
+    sensor16_old = sensor16_new;
+
+    String a="UPDATEP2_PROT," + (String)sensor16_new +",7";
+    Serial.println(a);
+  }  
 }

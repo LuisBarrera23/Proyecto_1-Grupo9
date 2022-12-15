@@ -15,7 +15,14 @@ estadoLED5_old = "0"
 estadoLED6_old = "0"
 estadoLED7_old = "0"
 estadoLED8_old = "0"
-
+estadoLED9_old = "0"
+estadoLED10_old = "0"
+estadoLED11_old = "0"
+estadoLED12_old = "0"
+estadoLED13_old = "0"
+estadoLED14_old = "0"
+estadoLED15_old = "0"
+estadoLED16_old = "0"
 
 def hilo():
     global estadoLED1_old
@@ -26,6 +33,14 @@ def hilo():
     global estadoLED6_old
     global estadoLED7_old
     global estadoLED8_old
+    global estadoLED9_old
+    global estadoLED10_old
+    global estadoLED11_old
+    global estadoLED12_old
+    global estadoLED13_old
+    global estadoLED14_old
+    global estadoLED15_old
+    global estadoLED16_old
 
     while(True):
         
@@ -112,7 +127,70 @@ def hilo():
                     if(cadena != ""):
                         cadena += ","
                     cadena +=  "H,2"
-                
+
+            estadoLED9 = resultado[8].get('state')
+            if estadoLED9!=estadoLED9_old:
+                estadoLED9_old = estadoLED9
+                if estadoLED9 == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "I,2"
+
+            estadoLED10 = resultado[9].get('state')
+            if estadoLED10!=estadoLED10_old:
+                estadoLED10_old = estadoLED10
+                if estadoLED10 == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "J,2"
+
+            estadoLED11 = resultado[10].get('state')
+            if estadoLED11!=estadoLED11_old:
+                estadoLED11_old = estadoLED11
+                if estadoLED11 == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "K,2"
+
+            estadoLED12 = resultado[11].get('state')
+            if estadoLED12!=estadoLED12_old:
+                estadoLED12_old = estadoLED12
+                if estadoLED12 == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "L,2"
+
+            estadoLED13 = resultado[12].get('state')
+            if estadoLED13!=estadoLED13_old:
+                estadoLED13_old = estadoLED13
+                if estadoLED13 == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "M,2"
+
+            estadoLED14 = resultado[13].get('state')
+            if estadoLED14!=estadoLED14_old:
+                estadoLED14_old = estadoLED14
+                if estadoLED14 == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "N,2"
+
+            estadoLED15 = resultado[14].get('state')
+            if estadoLED15!=estadoLED15_old:
+                estadoLED15_old = estadoLED15
+                if estadoLED15 == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "O,2"
+        
+            estadoLED16 = resultado[15].get('state')
+            if estadoLED16!=estadoLED16_old:
+                estadoLED16_old = estadoLED16
+                if estadoLED16 == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "P,2"
 
             if (cadena != ""):
                 print(cadena)
