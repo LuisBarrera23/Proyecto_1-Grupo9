@@ -268,89 +268,10 @@ void loop(){
       ledPrint(); 
     }
   }
-
-  //LED 1
-  sensor1_new = digitalRead(S1);
-  if((sensor1_new != sensor1_old)){
-    
-    LED1 = sensor1_new;
-    ledPrint();
-    sensor1_old = sensor1_new;
-
-    String a="UPDATEP1_PROT," + (String)sensor1_new +",0";
-    Serial.println(a);
-  }
-
-
-  //LED 2
-  sensor2_new = digitalRead(S2);
-  if((sensor2_new != sensor2_old)){
-    
-    LED2 = sensor2_new;
-    ledPrint();
-    sensor2_old = sensor2_new;
-
-    String a="UPDATEP1_PROT," + (String)sensor2_new +",1";
-    Serial.println(a);
-  }
-
-  //LED 3
-  sensor3_new = digitalRead(S3);
-  if((sensor3_new != sensor3_old)){
-    
-    LED3 = sensor3_new;
-    ledPrint();
-    sensor3_old = sensor3_new;
-
-    String a="UPDATEP1_PROT," + (String)sensor3_new +",2";
-    Serial.println(a);
-  }
-
-  //LED 4
-  sensor4_new = digitalRead(S4);
-  if((sensor4_new != sensor4_old)){
-    
-    LED4 = sensor4_new;
-    ledPrint();
-    sensor4_old = sensor4_new;
-
-    String a="UPDATEP1_PROT," + (String)sensor4_new +",3";
-    Serial.println(a);
-  }
-
-  //LED 5
-  sensor5_new = digitalRead(S5);
-  if((sensor5_new != sensor5_old)){
-    
-    LED5 = sensor5_new;
-    ledPrint();
-    sensor5_old = sensor5_new;
-
-    String a="UPDATEP1_PROT," + (String)sensor5_new +",4";
-    Serial.println(a);
-  }
-
-  //LED 6
-  sensor6_new = digitalRead(S6);
-  if((sensor6_new != sensor6_old)){
-    
-    LED6 = sensor6_new;
-    ledPrint();
-    sensor6_old = sensor6_new;
-
-    String a="UPDATEP1_PROT," + (String)sensor6_new +",5";
-    Serial.println(a);
-  }
-
-  //LED 7
-  sensor7_new = digitalRead(S7);
-  if((sensor7_new != sensor7_old)){
-    
-    LED7 = sensor7_new;
-    ledPrint();
-    sensor7_old = sensor7_new;
-
-    String a="UPDATEP1_PROT," + (String)sensor7_new +",6";
+  sensor16_new = digitalRead(S16);
+<<<<<<< HEAD
+  if((sensor16_new != sensor16_old)){
+    String a="UPDATEP2_PROT," + (String)sensor16_new +",7";
     Serial.println(a);
   }
 
