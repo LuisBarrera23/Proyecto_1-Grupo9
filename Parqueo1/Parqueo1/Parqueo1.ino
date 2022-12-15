@@ -9,6 +9,10 @@ int R16_9,  R8_1,  A16_9, A8_1,  V16_9,  V8_1 = 0;
 #define TIEMPO 200
 #define S16 A15
 
+
+boolean sensor16_old = LOW;
+boolean sensor16_new;
+
 void ledWrite(){
    shiftOut(pinData, pinClock, LSBFIRST, V8_1);
    shiftOut(pinData, pinClock, LSBFIRST, V16_9);
@@ -59,8 +63,9 @@ void loop(){
       ledWrite(); 
     }
   }
-  int sensor16=digitalRead(S16);
-  if(sensor16==1){
+  sensor16_new = digitalRead(S16);
+  if((sensor16_new =! sensor16_old)){
     Serial.println("{\"sensor\":16}");
+    sensor16_old = sensor16_new;
   }
 }
