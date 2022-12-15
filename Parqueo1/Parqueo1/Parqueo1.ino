@@ -556,7 +556,7 @@ void loop(){
     LED14 = sensor14_new;
     ledPrint();
     sensor14_old = sensor14_new;
-    String a="UPDATEP1_PROT," + (String)sensor14_new +",5";
+    String a="UPDATEP2_PROT," + (String)sensor14_new +",5";
     Serial.println(a);
   }
 
@@ -568,7 +568,7 @@ void loop(){
     ledPrint();
     sensor15_old = sensor15_new;
 
-    String a="UPDATEP1_PROT," + (String)sensor15_new +",6";
+    String a="UPDATEP2_PROT," + (String)sensor15_new +",6";
     Serial.println(a);
   }
 
