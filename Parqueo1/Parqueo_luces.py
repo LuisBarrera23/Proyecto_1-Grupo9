@@ -48,25 +48,6 @@ def encender():
 
     s.write(cadena.encode())
 
-
-
-def apagar():
-
-    #encode para mandar como texto
-    s.write("b".encode())
-    
-def actualizar():
-    mensaje = s.readline()
-    print("Lo que se manda: ",mensaje.decode())  
-    comparar=mensaje.decode()
-    comparar=comparar.replace('\n', '')
-    comparar=comparar.replace('\r', '')
-    print("Lo que se manda: ",comparar) 
-    if comparar =='a':
-        lbl.config(text="ocupado")
-    else:
-        lbl.config(text="Libre 1")
-       
        
 s= serial.Serial('COM2')
 
@@ -78,15 +59,5 @@ sc.title("Control de Led")
 
 b1=tk.Button(text="On", command=encender)
 b1.place(x=50,y= 10)
-
-b2=tk.Button(text="Off", command=apagar)
-b2.place(x=50,y= 50)
-
-b3=tk.Button(text="Actualizar", command=actualizar)
-b3.place(x=50,y= 100)
-
-lbl=tk.Label(text="Libre")
-lbl.place(x=50, y=150)
-
 
 sc.mainloop()
