@@ -6,7 +6,7 @@ import threading
 import json
 from flask import jsonify
 
-s = serial.Serial(port='COM2', baudrate=9600, timeout=200, write_timeout=1)
+s = serial.Serial(port='COM2', baudrate=9600)
 
 def hilo():
     while(True):
@@ -15,16 +15,10 @@ def hilo():
 
         response = requests.post(url, json=args)
 
-        url1 = 'https://arqui1api.000webhostapp.com/base.php'
-        args1 = {"Methods": "GETP2"}
-
-        response1 = requests.post(url1, json=args1)
         
 
-        if response.status_code == 200 and response1.status_code==200 :
+        if response.status_code == 200 :
             payload = response.json()
-            payload1=response1.json()
-            payload.extend(payload1)
             resultado = payload
 
             salida1_9r = 0
@@ -61,10 +55,10 @@ def hilo():
             cadena = str(salida1_9v) + "," + str(salida9_16v) + "," + str(salida1_9a) + \
                 "," + str(salida9_16a) + "," + \
                 str(salida1_9r) + "," + str(salida9_16r)
-            #print("Salida " , cadena)
+            print("Salida " , cadena)
 
-        s.write(cadena.encode())
-        time.sleep(2)
+            s.write(cadena.encode())
+        time.sleep(3)
 
 
 def lectura():
