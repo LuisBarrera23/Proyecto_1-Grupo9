@@ -24,6 +24,7 @@ int R16_9,  R8_1,  A16_9, A8_1,  V16_9,  V8_1 = 0;
 #define S15 A14
 #define S16 A15
 
+<<<<<<< HEAD
 boolean sensor1_old = LOW;
 boolean sensor1_new;
 boolean sensor2_old = LOW;
@@ -54,6 +55,9 @@ boolean sensor14_old = LOW;
 boolean sensor14_new;
 boolean sensor15_old = LOW;
 boolean sensor15_new;
+=======
+
+>>>>>>> 425b6d858c8b8dc4dfb0bb4d213488748719b65b
 boolean sensor16_old = LOW;
 boolean sensor16_new;
 
@@ -126,9 +130,14 @@ void loop(){
     }
   }
   sensor16_new = digitalRead(S16);
+<<<<<<< HEAD
   if((sensor16_new != sensor16_old)){
     String a="UPDATEP2_PROT," + (String)sensor16_new +",7";
     Serial.println(a);
+=======
+  if((sensor16_new =! sensor16_old)){
+    Serial.println("{\"sensor\":16}");
+>>>>>>> 425b6d858c8b8dc4dfb0bb4d213488748719b65b
     sensor16_old = sensor16_new;
   }
 }
