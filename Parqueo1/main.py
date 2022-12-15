@@ -4,12 +4,12 @@ import requests
 import time
 import threading
 import json
+from flask import jsonify
 
-s = serial.Serial(port='COM2', baudrate=9600, timeout=1, write_timeout=1)
+s = serial.Serial(port='COM2', baudrate=9600, timeout=200, write_timeout=1)
 
 def hilo():
     while(True):
-        print("hola")
         url = 'https://arqui1api.000webhostapp.com/base.php'
         args = {"Methods": "GETP1"}
 
@@ -73,12 +73,22 @@ def lectura():
         try:
             raw_string_b = s.readline()
             raw_string_s = raw_string_b.decode('utf-8')
-            if(raw_string_s.index("}")>=0 and raw_string_s.index("{")==0):
-                print(raw_string_s)
-            else:
-                print("nada")
+            #print(raw_string_s)
+            parametros=raw_string_s.split(",")
+            url = 'https://arqui1api.000webhostapp.com/base.php'
+            print(parametros[0])
+            print(parametros[1])
+            print(parametros[2])
+            args = {"Methods": parametros[0],"estado" : parametros[1],"id":parametros[2]}
+
+            response = requests.post(url, json=args)
+            payload = response.json()
+            #print(payload)
+                
+                
         except:
-            print("fallo")
+            pass
+            #print("fallo")
 def encender():
     t=threading.Thread(target=hilo,args=())
     t.start()
