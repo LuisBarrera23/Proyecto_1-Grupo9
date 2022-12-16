@@ -4,7 +4,6 @@ import requests
 import time
 import threading
 import json
-from flask import jsonify
 
 s = serial.Serial(port='COM2', baudrate=9600, timeout=200, write_timeout=1)
 estadoLED1_old = "0"
@@ -44,12 +43,12 @@ def hilo():
 
     while(True):
         
-        url1 = 'http://localhost/base.php'
+        url1 = 'https://arqui1grupo9.website/base.php'
         args1 = {"Methods": "GETP2"}
 
         response1 = requests.post(url1, json=args1, timeout=4)
 
-        url = 'http://localhost/base.php'
+        url = 'https://arqui1grupo9.website/base.php'
         args = {"Methods": "GETP1"}
 
         response = requests.post(url, json=args, timeout=4)
@@ -280,7 +279,7 @@ def lectura():
             raw_string_s = raw_string_b.decode('utf-8')
             print(raw_string_s)
             parametros=raw_string_s.split(",")
-            url = 'http://localhost/base.php'
+            url = 'https://arqui1grupo9.website/base.php'
             args = {"Methods": parametros[0],"estado" : parametros[1],"id":parametros[2]}
 
             response = requests.post(url, json=args)

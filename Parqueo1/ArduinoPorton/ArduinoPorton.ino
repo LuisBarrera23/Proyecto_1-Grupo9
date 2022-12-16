@@ -16,14 +16,14 @@ void loop() {
     entrada=Serial.read();
     
 
-    if(entrada=='A') { 
+    if(entrada=='E') { 
       digitalWrite(13,1);
       // Entrada.step(90);
       // delay(1000); 
       // Entrada.step(-90);
     }
     
-    if(entrada=='B') { 
+    if(entrada=='S') { 
       digitalWrite(13,0);
       // myStepper2.step(50);
       // delay(1000); 
