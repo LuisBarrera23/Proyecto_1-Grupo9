@@ -1,3 +1,41 @@
+#define ZERO 11
+#define NINETY 10
+#define OPEN 9
+#define CLOSE 8
+
+int state = 0;
+
+void setup(){
+  pinMode(ZERO, OUTPUT);
+  pinMode(NINETY, OUTPUT);
+  pinMode(OPEN, INPUT);
+  pinMode(CLOSE, INPUT);
+
+  digitalWrite(ZERO, HIGH);
+  digitalWrite(NINETY, LOW);
+}
+
+void loop(){
+  switch(state){
+    case 0:
+      if(digitalRead(OPEN) == HIGH){
+        // ABRIENDO TALANQUERA POR MEDIO DEL BOTÓN
+        digitalWrite(ZERO, LOW);
+        digitalWrite(NINETY, HIGH);
+        state = 1;
+      }
+      break;
+    case 1:
+      if(digitalRead(CLOSE) == LOW){
+        // CERRANDO TALANQUERA CUANDO EL SENSOR SE ALEJA
+        digitalWrite(ZERO, HIGH);
+        digitalWrite(NINETY, LOW);
+        state = 0;
+      }
+      break;
+  }
+}
+/*
 #include <Stepper.h>
 
   
@@ -32,3 +70,4 @@ void loop() {
   }
 
 }
+*/
