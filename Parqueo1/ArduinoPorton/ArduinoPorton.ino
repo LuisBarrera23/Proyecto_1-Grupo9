@@ -3,71 +3,74 @@
 #define OPEN 9
 #define CLOSE 8
 
-int state = 0;
+#define ZERO1 7
+#define NINETY1 6
+#define OPEN1 5
+#define CLOSE1 4
 
-void setup(){
+char entrada;
+int state = 0;
+int state1 = 0;
+
+void setup() {
   pinMode(ZERO, OUTPUT);
   pinMode(NINETY, OUTPUT);
   pinMode(OPEN, INPUT);
   pinMode(CLOSE, INPUT);
 
+  pinMode(ZERO1, OUTPUT);
+  pinMode(NINETY1, OUTPUT);
+  pinMode(OPEN1, INPUT);
+  pinMode(CLOSE1, INPUT);
+
   digitalWrite(ZERO, HIGH);
   digitalWrite(NINETY, LOW);
-}
+  digitalWrite(ZERO1, HIGH);
+  digitalWrite(NINETY1, LOW);
 
-void loop(){
-  switch(state){
-    case 0:
-      if(digitalRead(OPEN) == HIGH){
-        // ABRIENDO TALANQUERA POR MEDIO DEL BOTÓN
-        digitalWrite(ZERO, LOW);
-        digitalWrite(NINETY, HIGH);
-        state = 1;
-      }
-      break;
-    case 1:
-      if(digitalRead(CLOSE) == LOW){
-        // CERRANDO TALANQUERA CUANDO EL SENSOR SE ALEJA
-        digitalWrite(ZERO, HIGH);
-        digitalWrite(NINETY, LOW);
-        state = 0;
-      }
-      break;
-  }
-}
-/*
-#include <Stepper.h>
-
-  
-Stepper Entrada(40,8,9,10,11);
-char entrada; 
- 
-void setup() {
   Serial.begin(9600);
-  pinMode(3,OUTPUT);
-  Entrada.setSpeed(100);
 }
- 
-void loop() {  
 
-  if (Serial.available()>0){
-    entrada=Serial.read();
-    
+void loop() {
+  if (Serial.available() > 0) {
+    entrada = Serial.read();
 
-    if(entrada=='E') { 
-      digitalWrite(13,1);
-      // Entrada.step(90);
-      // delay(1000); 
-      // Entrada.step(-90);
+    if (entrada == 'E') {
+      digitalWrite(ZERO, LOW);
+      digitalWrite(NINETY, HIGH);
+      state = 1;
     }
-    
-    if(entrada=='S') { 
-      digitalWrite(13,0);
-      // myStepper2.step(50);
-      // delay(1000); 
-      // myStepper2.step(-50);
+
+    if (entrada == 'S') {
+      digitalWrite(ZERO1, LOW);
+      digitalWrite(NINETY1, HIGH);
+      state1 = 1;
+    }
+  } else {
+    if (digitalRead(OPEN) == HIGH) {
+      // ABRIENDO TALANQUERA POR MEDIO DEL BOTÓN
+      digitalWrite(ZERO, LOW);
+      digitalWrite(NINETY, HIGH);
+      state = 1;
+    }
+    if (digitalRead(OPEN1) == HIGH) {
+      // ABRIENDO TALANQUERA POR MEDIO DEL BOTÓN
+      digitalWrite(ZERO1, LOW);
+      digitalWrite(NINETY1, HIGH);
+      state1 = 1;
     }
   }
 
+  if (state == 1 && digitalRead(CLOSE) == LOW) {
+    // CERRANDO TALANQUERA CUANDO EL SENSOR SE ALEJA
+    digitalWrite(ZERO, HIGH);
+    digitalWrite(NINETY, LOW);
+    state = 0;
+  }
+  if (state1 == 1 && digitalRead(CLOSE1) == LOW) {
+    // CERRANDO TALANQUERA CUANDO EL SENSOR SE ALEJA
+    digitalWrite(ZERO1, HIGH);
+    digitalWrite(NINETY1, LOW);
+    state1 = 0;
+  }
 }
-*/

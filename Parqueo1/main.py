@@ -6,6 +6,7 @@ import threading
 import json
 
 s = serial.Serial(port='COM2', baudrate=9600, timeout=200, write_timeout=1)
+s1 = serial.Serial(port='COM4', baudrate=19200, timeout=200, write_timeout=1)
 estadoLED1_old = "0"
 estadoLED2_old = "0"
 estadoLED3_old = "0"
@@ -290,11 +291,48 @@ def lectura():
         except:
             pass
             #print("fallo")
+
+
+def consultarlcd():
+    while(True):
+        url = 'https://arqui1grupo9.website/base.php'
+        args = {"Methods": "GETNUMP12"}
+
+        response = requests.post(url, json=args, timeout=4)
+
+        cadena=""
+
+        if response.status_code == 200 :
+            payload = response.json()
+
+            ocupado = payload.get('ocupados')
+            res = payload.get('reservados')
+            tot = ocupado + res
+            cadena=" ,"
+            if tot==16:
+                cadena +="FULL,"
+            elif ocupado==16:
+                cadena +="FULL,"
+            else:
+                cadena +="FREE,"
+
+            cadena += str(payload.get('disponibles'))+","
+            cadena += str(payload.get('ocupados'))+","
+            cadena += str(payload.get('reservados'))
+
+            if (cadena != ""):
+                print(cadena)
+                s1.write(cadena.encode())
+
+        time.sleep(5)   
+
 def encender():
     t=threading.Thread(target=hilo,args=())
     t.start()
     t2=threading.Thread(target=lectura,args=())
     t2.start()
+    t3=threading.Thread(target=consultarlcd,args=())
+    t3.start()
     
 
 
