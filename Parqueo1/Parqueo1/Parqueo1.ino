@@ -387,6 +387,12 @@ void loop() {
           s = strtok(NULL, ",");
           LED16 = atol(s);
         }
+        if (String(s) == "Q") {
+          s = strtok(NULL, ",");
+          digitalWrite(BUZZER,1);
+          delay(3000);
+          digitalWrite(BUZZER,0);
+        }
         s = strtok(NULL, ",");
       }
       ledPrint();

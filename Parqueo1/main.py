@@ -285,7 +285,13 @@ def lectura():
 
             response = requests.post(url, json=args)
             payload = response.json()
-            #print(payload)
+            print(payload)
+            variable=payload
+            alarma=variable.get("alarma")
+            print(alarma)
+            if alarma==1:
+                cadena="Q,1"
+                s.write(cadena.encode())
                 
                 
         except:
