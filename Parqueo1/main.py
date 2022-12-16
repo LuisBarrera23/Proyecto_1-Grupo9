@@ -44,12 +44,12 @@ def hilo():
 
     while(True):
         
-        url1 = 'https://arqui1api.000webhostapp.com/base.php'
+        url1 = 'http://localhost/base.php'
         args1 = {"Methods": "GETP2"}
 
         response1 = requests.post(url1, json=args1, timeout=4)
 
-        url = 'https://arqui1api.000webhostapp.com/base.php'
+        url = 'http://localhost/base.php'
         args = {"Methods": "GETP1"}
 
         response = requests.post(url, json=args, timeout=4)
@@ -64,12 +64,22 @@ def hilo():
             estadoLED1 = resultado[0].get('state')
 
             if estadoLED1!=estadoLED1_old:
+
+                if estadoLED1 == "0" and estadoLED1_old == "2":
+                    cadena =  "A,0"
+                
                 estadoLED1_old = estadoLED1
                 if estadoLED1 == "2":
                     cadena =  "A,2"
                     
             estadoLED2 = resultado[1].get('state')
             if estadoLED2!=estadoLED2_old:
+
+                if estadoLED2 == "0" and estadoLED2_old == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "B,0"
+
                 estadoLED2_old = estadoLED2
                 if estadoLED2 == "2":
                     if(cadena != ""):
@@ -78,6 +88,11 @@ def hilo():
 
             estadoLED3 = resultado[2].get('state')
             if estadoLED3!=estadoLED3_old:
+                if estadoLED3 == "0" and estadoLED3_old == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "C,0"
+
                 estadoLED3_old = estadoLED3
                 if estadoLED3 == "2":
                     if(cadena != ""):
@@ -87,6 +102,11 @@ def hilo():
 
             estadoLED4 = resultado[3].get('state')
             if estadoLED4!=estadoLED4_old:
+                if estadoLED4 == "0" and estadoLED4_old == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "D,0"
+
                 estadoLED4_old = estadoLED4
                 if estadoLED4 == "2": 
                     if(cadena != ""):
@@ -96,6 +116,11 @@ def hilo():
 
             estadoLED5 = resultado[4].get('state')
             if estadoLED5!=estadoLED5_old:
+                if estadoLED5 == "0" and estadoLED5_old == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "E,0"
+
                 estadoLED5_old = estadoLED5
                 if estadoLED5 == "2":
                     if(cadena != ""):
@@ -104,6 +129,10 @@ def hilo():
 
             estadoLED6 = resultado[5].get('state')
             if estadoLED6!=estadoLED6_old:
+                if estadoLED6 == "0" and estadoLED6_old == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "F,0"
                 estadoLED6_old = estadoLED6
                 if estadoLED6 == "2" :
                     if(cadena != ""):
@@ -113,6 +142,11 @@ def hilo():
 
             estadoLED7 = resultado[6].get('state')
             if estadoLED7!=estadoLED7_old:
+                if estadoLED7 == "0" and estadoLED7_old == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "G,0"
+
                 estadoLED7_old = estadoLED7
                 if estadoLED7 == "2": 
                     if(cadena != ""):
@@ -122,6 +156,10 @@ def hilo():
 
             estadoLED8 = resultado[7].get('state')
             if estadoLED8!=estadoLED8_old:
+                if estadoLED8 == "0" and estadoLED8_old == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "H,0"
                 estadoLED8_old = estadoLED8
                 if estadoLED8 == "2":
                     if(cadena != ""):
@@ -130,6 +168,10 @@ def hilo():
 
             estadoLED9 = resultado[8].get('state')
             if estadoLED9!=estadoLED9_old:
+                if estadoLED9 == "0" and estadoLED9_old == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "I,0"
                 estadoLED9_old = estadoLED9
                 if estadoLED9 == "2":
                     if(cadena != ""):
@@ -138,6 +180,10 @@ def hilo():
 
             estadoLED10 = resultado[9].get('state')
             if estadoLED10!=estadoLED10_old:
+                if estadoLED10 == "0" and estadoLED10_old == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "J,0"
                 estadoLED10_old = estadoLED10
                 if estadoLED10 == "2":
                     if(cadena != ""):
@@ -146,6 +192,10 @@ def hilo():
 
             estadoLED11 = resultado[10].get('state')
             if estadoLED11!=estadoLED11_old:
+                if estadoLED11 == "0" and estadoLED11_old == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "K,0"
                 estadoLED11_old = estadoLED11
                 if estadoLED11 == "2":
                     if(cadena != ""):
@@ -154,6 +204,10 @@ def hilo():
 
             estadoLED12 = resultado[11].get('state')
             if estadoLED12!=estadoLED12_old:
+                if estadoLED12 == "0" and estadoLED12_old == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "L,0"
                 estadoLED12_old = estadoLED12
                 if estadoLED12 == "2":
                     if(cadena != ""):
@@ -162,6 +216,10 @@ def hilo():
 
             estadoLED13 = resultado[12].get('state')
             if estadoLED13!=estadoLED13_old:
+                if estadoLED13 == "0" and estadoLED13_old == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "M,0"
                 estadoLED13_old = estadoLED13
                 if estadoLED13 == "2":
                     if(cadena != ""):
@@ -170,6 +228,10 @@ def hilo():
 
             estadoLED14 = resultado[13].get('state')
             if estadoLED14!=estadoLED14_old:
+                if estadoLED14 == "0" and estadoLED14_old == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "N,0"
                 estadoLED14_old = estadoLED14
                 if estadoLED14 == "2":
                     if(cadena != ""):
@@ -178,6 +240,10 @@ def hilo():
 
             estadoLED15 = resultado[14].get('state')
             if estadoLED15!=estadoLED15_old:
+                if estadoLED15 == "0" and estadoLED15_old == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "O,0"
                 estadoLED15_old = estadoLED15
                 if estadoLED15 == "2":
                     if(cadena != ""):
@@ -186,6 +252,10 @@ def hilo():
         
             estadoLED16 = resultado[15].get('state')
             if estadoLED16!=estadoLED16_old:
+                if estadoLED16 == "0" and estadoLED16_old == "2":
+                    if(cadena != ""):
+                        cadena += ","
+                    cadena +=  "P,0"
                 estadoLED16_old = estadoLED16
                 if estadoLED16 == "2":
                     if(cadena != ""):
@@ -210,7 +280,7 @@ def lectura():
             raw_string_s = raw_string_b.decode('utf-8')
             print(raw_string_s)
             parametros=raw_string_s.split(",")
-            url = 'https://arqui1api.000webhostapp.com/base.php'
+            url = 'http://localhost/base.php'
             args = {"Methods": parametros[0],"estado" : parametros[1],"id":parametros[2]}
 
             response = requests.post(url, json=args)
